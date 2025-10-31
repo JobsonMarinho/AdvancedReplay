@@ -1,13 +1,13 @@
 plugins {
     id 'java'
-    id 'com.gradleup.shadow' version '8.3.0'
+    id 'com.gradleup.shadow' version '9.2.2'
     id 'maven-publish'
 }
 
-
 repositories {
     mavenCentral()
-    maven { url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    // PaperMC repo
+    maven { url = "https://repo.papermc.io/repository/maven-public/" }
     // ProtocolLib repo
     maven { url "https://repo.dmulloy2.net/repository/public/" }
     // Libby repo
@@ -17,25 +17,25 @@ repositories {
 dependencies {
     implementation project(':legacy')
 
-    compileOnly "org.spigotmc:spigot-api:1.21.6-R0.1-SNAPSHOT"
-    compileOnly 'com.comphenix.protocol:ProtocolLib:5.3.0'
+    compileOnly "io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT"
+    compileOnly 'com.comphenix.protocol:ProtocolLib:5.4.0-SNAPSHOT'
 
     // Dependency resolver at runtime
-    implementation 'com.alessiodp.libby:libby-bukkit:2.0.0-SNAPSHOT'
+    implementation 'com.alessiodp.libby:libby-paper:2.0.0-SNAPSHOT'
     // S3 storage backend
-    compileOnly 'io.minio:minio:8.5.12'
+    compileOnly 'io.minio:minio:8.6.0'
 }
 
 allprojects {
     group = 'me.jumper251.replay'
-    version = '1.8.15'
+    version = '1.8.16'
 
     apply plugin: 'java'
     apply plugin: 'maven-publish'
 
     java {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility = 21
+        targetCompatibility = 21
     }
 
     compileJava {
