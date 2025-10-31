@@ -36,6 +36,14 @@ allprojects {
     java {
         sourceCompatibility = 21
         targetCompatibility = 21
+
+        withSourcesJar()
+        withJavadocJar()
+    }
+
+    tasks.withType(Javadoc).configureEach {
+        options.encoding = 'UTF-8'
+        options.addStringOption('Xdoclint:none', '-quiet')
     }
 
     compileJava {
