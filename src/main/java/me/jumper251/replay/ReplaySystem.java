@@ -1,24 +1,22 @@
 package me.jumper251.replay;
 
 
-import java.util.HashMap;
-
-
-import com.alessiodp.libby.BukkitLibraryManager;
 import com.alessiodp.libby.Library;
-import me.jumper251.replay.filesystem.saving.S3ReplaySaver;
-import org.bukkit.plugin.java.JavaPlugin;
-
+import com.alessiodp.libby.PaperLibraryManager;
 import me.jumper251.replay.database.DatabaseRegistry;
 import me.jumper251.replay.filesystem.ConfigManager;
 import me.jumper251.replay.filesystem.saving.DatabaseReplaySaver;
 import me.jumper251.replay.filesystem.saving.DefaultReplaySaver;
 import me.jumper251.replay.filesystem.saving.ReplaySaver;
+import me.jumper251.replay.filesystem.saving.S3ReplaySaver;
 import me.jumper251.replay.replaysystem.Replay;
 import me.jumper251.replay.replaysystem.utils.ReplayCleanup;
 import me.jumper251.replay.utils.Metrics;
 import me.jumper251.replay.utils.ReplayManager;
 import me.jumper251.replay.utils.Updater;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
 
 
 public class ReplaySystem extends JavaPlugin {
@@ -49,7 +47,7 @@ public class ReplaySystem extends JavaPlugin {
 		
 		Long start = System.currentTimeMillis();
 
-		BukkitLibraryManager libraryManager = new BukkitLibraryManager(this);
+		PaperLibraryManager libraryManager = new PaperLibraryManager(this);
 		libraryManager.addMavenCentral();
 
 		getLogger().info("Loading Replay v" + getDescription().getVersion() + " by " + getDescription().getAuthors().get(0));
