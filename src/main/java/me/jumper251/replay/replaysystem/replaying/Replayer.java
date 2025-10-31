@@ -62,10 +62,12 @@ public class Replayer {
 	
 	private ReplayingUtils utils;
 	private ReplaySession session;
+	private String worldName;
 		
-	public Replayer(Replay replay, Player watcher) {
+	public Replayer(Replay replay, Player watcher, String worldName) {
 		this.replay = replay;
 		this.watcher = watcher;
+		this.worldName = worldName;
 		this.npcs = new HashMap<String, INPC>();
 		this.entities = new HashMap<Integer, IEntity>();
 		this.blockChanges = new HashMap<>();
@@ -92,9 +94,15 @@ public class Replayer {
 			spawnData = findFirstSpawn(data).orElse(null);
 		}
 
-		if (spawnData != null && !spawnData.getLocation().isValidWorld()) {
-			sendMessage(Messages.REPLAYING_WORLD_NOT_FOUND.arg("world", spawnData.getLocation().getWorld()));
-			return false;
+		if (spawnData != null) {
+			if (this.worldName != null) {
+				spawnData.getLocation().setWorld(this.worldName);
+			}
+
+			if (!spawnData.getLocation().isValidWorld()) {
+				sendMessage(Messages.REPLAYING_WORLD_NOT_FOUND.arg("world", spawnData.getLocation().getWorld()));
+				return false;
+			}
 		}
 
 		ReplayHelper.replaySessions.put(watcher.getName(), this);

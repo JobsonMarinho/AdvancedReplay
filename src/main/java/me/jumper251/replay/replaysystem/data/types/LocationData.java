@@ -49,6 +49,10 @@ public class LocationData implements Serializable{
 		return z;
 	}
 	
+	public void setWorld(String world) {
+		this.world = world;
+	}
+
 	public void setYaw(float yaw) {
 		this.yaw = yaw;
 	}

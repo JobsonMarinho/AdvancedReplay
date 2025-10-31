@@ -56,16 +56,20 @@ public class Replay {
 	}
 	
 	public void play(Player watcher) {
-		if (!Bukkit.isPrimaryThread()) {
-			Bukkit.getScheduler().runTask(ReplaySystem.getInstance(), () -> startReplay(watcher));
-		} else {
-			startReplay(watcher);
-		}
-		
+		this.play(watcher, null);
 	}
-		
-	private void startReplay(Player watcher) {
-		this.replayer = new Replayer(this, watcher);
+
+	public void play(Player watcher, String world) {
+		if (!Bukkit.isPrimaryThread()) {
+			Bukkit.getScheduler().runTask(ReplaySystem.getInstance(), () -> this.startReplay(watcher, world));
+		} else {
+			this.startReplay(watcher, world);
+		}
+
+	}
+
+	private void startReplay(Player watcher, String world) {
+		this.replayer = new Replayer(this, watcher, world);
 		this.isPlaying = this.replayer.start();
 	}
 	
