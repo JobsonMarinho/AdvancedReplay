@@ -1,8 +1,8 @@
 package me.jumper251.replay;
 
 
+import com.alessiodp.libby.BukkitLibraryManager;
 import com.alessiodp.libby.Library;
-import com.alessiodp.libby.PaperLibraryManager;
 import me.jumper251.replay.database.DatabaseRegistry;
 import me.jumper251.replay.filesystem.ConfigManager;
 import me.jumper251.replay.filesystem.saving.DatabaseReplaySaver;
@@ -47,7 +47,7 @@ public class ReplaySystem extends JavaPlugin {
 		
 		Long start = System.currentTimeMillis();
 
-		PaperLibraryManager libraryManager = new PaperLibraryManager(this);
+		BukkitLibraryManager libraryManager = new BukkitLibraryManager(this);
 		libraryManager.addMavenCentral();
 
 		getLogger().info("Loading Replay v" + getDescription().getVersion() + " by " + getDescription().getAuthors().get(0));
