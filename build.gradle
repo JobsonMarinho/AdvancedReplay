@@ -9,7 +9,7 @@ repositories {
     // PaperMC repo
     maven { url = "https://repo.papermc.io/repository/maven-public/" }
     // ProtocolLib repo
-    maven { url "https://repo.dmulloy2.net/repository/public/" }
+    maven { url = "https://repo.dmulloy2.net/repository/public/" }
     // Libby repo
     maven { url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
 }
